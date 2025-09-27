@@ -1,0 +1,36 @@
+import pygame
+from car import Car
+from game_data import cars, unlock_everything
+
+player = {"money": 0, "all_achievements": False}
+unlock_everything(player)
+
+pygame.init()
+screen = pygame.display.set_mode((800, 600))
+clock = pygame.time.Clock()
+
+car_objs = []
+y = 60
+for c in cars:
+    if c["unlocked"]:
+        car_objs.append(Car(100, y, c["name"], c["color"]))
+        y += 80
+
+running = True
+while running:
+    screen.fill((15, 15, 30))
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            running = False
+
+    for car in car_objs:
+        car.draw(screen)
+        font = pygame.font.SysFont(None, 24)
+        name_surf = font.render(car.name, True, (255, 255, 255))
+        screen.blit(name_surf, (car.x + 70, car.y + 8))
+
+    pygame.display.flip()
+    clock.tick(60)
+
+
+pygame.quit()
