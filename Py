@@ -1,0 +1,13 @@
+cars = [
+    {"name": "Toyota Supra", "color": (200, 200, 200), "unlocked": True},
+    {"name": "BMW M3", "color": (100, 100, 255), "unlocked": True},
+    {"name": "Lamborghini Aventador", "color": (255, 255, 0), "unlocked": True},
+    {"name": "Lamborghini Huracan", "color": (0, 255, 0), "unlocked": True},
+    {"name": "Lamborghini Urus", "color": (255, 150, 0), "unlocked": True},
+]
+
+def unlock_everything(player):
+    player["money"] = 9999999
+    player["all_achievements"] = True
+    for car in cars:
+        car["unlocked"] = True
